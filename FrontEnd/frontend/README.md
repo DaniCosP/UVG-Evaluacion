@@ -1,27 +1,31 @@
-# Frontend
+# Repositorio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+Clonacion de repositorio
+```
+git clone https://github.com/DaniCosP/UVG-Evaluacion.git
+```
 
-## Development server
+## FrontEnd Instalacion
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Carpeta front End
+```
+cd FrontEnd/frontend
+```
 
-## Code scaffolding
+Instalacion de node modules
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install
+```
 
-## Build
+Modificar la ruta del servidor apollo en el archivo src/app/graphql.module.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+const uri = 'http://localhost:4000/'; 
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Uso
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Correr la aplicacion
+```
+ng serve
+```

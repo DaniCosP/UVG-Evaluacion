@@ -1,0 +1,75 @@
+<div class="container">
+
+    <h1 class="m-2">Mantenimiento de Productos</h1>
+
+    <button type="button" (click)="setMod(false,0)" class="btn btn-primary m-2" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Agregar Producto
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form [formGroup]="producto" (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombres" class="form-label">Nombre: </label>
+                            <input id="nombres" class="form-control" type="text" formControlName="nombre">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellidos" class="form-label">Descripcion: </label>
+                            <input id="apellidos" class="form-control" type="text" formControlName="descripcion">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nit" class="form-label">Precio: </label>
+                            <input id="nit" class="form-control" type="number" formControlName="precio">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button *ngIf="!mod" type="submit" [disabled]="!producto.valid" data-bs-dismiss="modal"
+                            class="btn btn-success">Agregar
+                            </button>
+                        <button *ngIf="mod" type="button" (click)="delete()" data-bs-dismiss="modal"
+                            class="btn btn-danger">Eliminar
+                            </button>
+                        <button *ngIf="mod" type="submit" [disabled]="!cliente.valid" data-bs-dismiss="modal"
+                            class="btn btn-warning">Modificar
+                            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <th scope="row"><button type="button" (click)="setMod(true,producto.idproducto)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" class="btn btn-link">{{producto.idproducto}}</button></th>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.descripcion}}</td>
+                <td>{{producto.precio}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

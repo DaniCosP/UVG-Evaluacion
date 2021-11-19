@@ -46,7 +46,7 @@ class MysqlSource extends DataSource {
     }
 
     async getProductos(){
-        const arr = await this.mysql.cliente.findAll({where: {estado: "A"}});
+        const arr = await this.mysql.producto.findAll({where: {estado: "A"}});
         return arr;
     }
 
@@ -63,7 +63,7 @@ class MysqlSource extends DataSource {
 
     async updateProducto(id, producto){
         try{
-            await this.mysql.cliente.update(producto, {where: {idproducto: id}}) 
+            await this.mysql.producto.update(producto, {where: {idproducto: id}}) 
             return {codigo: 0, mensaje: "Operacion ejecutada con exito"};
         }
         catch(ex){
@@ -98,9 +98,9 @@ class MysqlSource extends DataSource {
     }
 
 
-    async getProductoById({ idproducto }) {
-        const arr = await this.mysql.producto.findOne({ where: { id: idproducto } });
-        return arr;
+    async getProductoById({ id }) {
+        const cliente = await this.mysql.producto.findOne({ where: { idproducto: id } });
+        return cliente;
     }
 
 }
