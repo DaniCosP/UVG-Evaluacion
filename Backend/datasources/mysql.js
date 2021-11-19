@@ -29,6 +29,8 @@ class MysqlSource extends DataSource {
     }
 
     async updateCliente(id, cliente){
+        console.log(id);
+        console.log(cliente);
         try{
             await this.mysql.cliente.update(cliente, {where: {idcliente: id}}) 
             return {codigo: 0, mensaje: "Operacion ejecutada con exito"};
@@ -36,6 +38,11 @@ class MysqlSource extends DataSource {
         catch(ex){
             return {codigo: 0, mensaje: "Ocurrio un error en la operacion"};
         }
+    }
+
+    async getClienteById({ id }) {
+        const cliente = await this.mysql.cliente.findOne({ where: { idcliente: id } });
+        return cliente;
     }
 
     async getProductos(){
@@ -80,7 +87,7 @@ class MysqlSource extends DataSource {
         }
     }
 
-    async updateCliente(id, factura){
+    async updateFactura(id, factura){
         try{
             await this.mysql.factura.update(factura, {where: {idfactura: id}}) 
             return {codigo: 0, mensaje: "Operacion ejecutada con exito"};

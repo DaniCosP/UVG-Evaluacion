@@ -1,7 +1,8 @@
 module.exports = {
 
     Query: {
-        clientes: async (_, __, {dataSources}) => await dataSources.MysqlSource.getClientes()
+        clientes: async (_, __, {dataSources}) => await dataSources.MysqlSource.getClientes(),
+        cliente: async (_, {id}, {dataSources}) => await dataSources.MysqlSource.getClienteById({id: id})
     },
 
     Mutation: {
